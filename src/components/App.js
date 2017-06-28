@@ -21,8 +21,8 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Calculator</h1>
-                <Display value={this.state.leftState|| 0}/>
-                <Keypad handleClick={this.addNums} />
+                <Display value={this.state.leftState + this.state.operator + this.state.rightState} />
+                <Keypad handleClick={this.addNums || this.addOps} />
             </div>
         )
     }
@@ -30,7 +30,8 @@ class App extends React.Component {
     addNums(event) {
         const value = event.target.innerHTML
         this.setState({
-            leftState: this.state.leftState + value
+            leftState: this.state.leftState + value,
+            
         })
 
         console.log(this.state.leftState)
@@ -39,6 +40,13 @@ class App extends React.Component {
 
 
     addOps(event) {
+        const value = event.target.innerHTML
+        this.setState({
+            operator: this.state.operator + value
+        })
+
+    }
+     addOps(event) {
         const value = event.target.innerHTML
         this.setState({
             operator: this.state.operator + value

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
-const numberButtons = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9'], ['0', '.']];
-const operatorButtons =[['+','-','/','*','=']]
+const numberButtons = [['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3'], ['0', '.']];
+const operatorButtons =[['+','-','/','*']];
+const equals = ['='];
 
 class Keypad extends React.Component {
     render() {
@@ -20,13 +21,15 @@ class Keypad extends React.Component {
                     )
                 }
                 )}
+                <Button handleClick={this.props.handleClick}
+                            button={equals[0]}/>
                 </div>
                  <div>
                 {operatorButtons.map((row) => {
                     return (
                         <div className='row'>
                             {row.map((button) => {
-                                return (<Button handleClick={this.props.addOps}
+                                return (<Button handleClick={this.props.handleClick}
                                     button={button} />
                             )})}
                         </div>
