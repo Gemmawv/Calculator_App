@@ -8,27 +8,43 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: ''
+            leftState: '',
+            operator: '',
+            rightState: '',
+            result: ''
+
         }
-        this.handleClick = this.handleClick.bind(this);
+        this.addNums = this.addNums.bind(this);
+        this.addOps = this.addOps.bind(this);
     }
     render() {
         return (
             <div>
                 <h1>Calculator</h1>
-                <Display />
-                <Keypad handleClick={this.handleClick}/>
+                <Display value={this.state.leftState|| 0}/>
+                <Keypad handleClick={this.addNums} />
             </div>
         )
     }
 
-    handleClick (event) {
-        // display innerHTML
-        // this.setState ({input:event.target.innerHTML});
-        // when = is clicked, display result of previous string
-         console.log(event.target.innerHTML);
-        // console.log(this.state.input)
-        
+    addNums(event) {
+        const value = event.target.innerHTML
+        this.setState({
+            leftState: this.state.leftState + value
+        })
+
+        console.log(this.state.leftState)
+
+    }
+
+
+    addOps(event) {
+        const value = event.target.innerHTML
+        this.setState({
+            operator: this.state.operator + value
+        })
+
     }
 }
+
 export default App;
