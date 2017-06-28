@@ -1,10 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/App';
 
-const MyFirstComponent = React.createElement(
-  'h1', 
-  { style: { color: 'cornflowerblue' } }, 
-  'Welcome to React!'
-);
-
-ReactDOM.render(Hello, document.getElementById('root'));
+ReactDOM.render(<App/> ,document.getElementById('root'));
